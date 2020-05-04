@@ -1,4 +1,11 @@
 '''
+Formato do arquivo csv
+
+MARCA 1 ; PRODUTO 1
+MARCA 1 ; PRODUTO 2
+MARCA 2 ; PRODUTO 3
+MARCA 2 ; PRODUTO 4
+
 Melhorias:
     Não funciona se o nome do produto tiver uma /, tem que trocar pra \.
     Não funciona se vier coluna NULL do banco.
@@ -20,9 +27,8 @@ def cria_marcas(lista_produtos):
 
 
 def cria_produtos(lista_produtos):
-    with open(lista_produtos, newline='') as csv_file:
+    with open(lista_produtos, newline='', encoding='utf-8-sig') as csv_file:
         spam_reader = csv.reader(csv_file, delimiter=';', quotechar='|')
-        next(csv_file)
         for row in spam_reader:
             # entra na pasta da marca
             os.chdir(row[0])
